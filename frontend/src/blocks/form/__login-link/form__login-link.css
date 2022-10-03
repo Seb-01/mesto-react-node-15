@@ -1,0 +1,32 @@
+.form__login-link {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: none;
+
+
+
+  width: 358px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto 0;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+
+.form__login-link:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .form__login-link {
+    max-width: 260px;
+  }
+}

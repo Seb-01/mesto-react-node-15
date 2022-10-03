@@ -1,0 +1,6 @@
+.elements__wrapper {
+  display: flex;
+  margin: 25px 15px 26px 21px;
+  justify-content: space-between;
+  align-items: center;
+}

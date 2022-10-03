@@ -1,0 +1,24 @@
+.header__link-button {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-align: right;
+  padding: 51px 0 46px;
+  background-color: transparent;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+.header__link-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .header__link-button {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

@@ -1,0 +1,19 @@
+.popup__exclamation {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin: 0;
+  padding: 32px 36px 60px;
+  color: #000000;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__exclamation {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 40px 18px 50px;
+  }
+}

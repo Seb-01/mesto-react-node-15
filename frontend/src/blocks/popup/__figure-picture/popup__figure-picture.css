@@ -1,0 +1,5 @@
+.popup__figure-picture {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}

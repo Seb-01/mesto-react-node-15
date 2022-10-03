@@ -1,0 +1,10 @@
+.popup__success-pic {
+  width: 120px;
+  margin: 60px auto 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .popup__success-pic {
+    margin: 50px auto 0;
+  }
+}
