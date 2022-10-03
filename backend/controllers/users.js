@@ -7,6 +7,8 @@ const DuplicateError = require('../errors/duplicate-uniq-dbfield');
 const UnAuthoRizedError = require('../errors/unauthorized');
 const NotFoundError = require('../errors/not-found');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 // создает пользователя
 module.exports.createUser = (req, res, next) => {
   // console.log(req);
@@ -76,7 +78,7 @@ module.exports.login = (req, res, next) => {
           // аутентификация успешна - создаем JWT сроком на неделю
           const token = jwt.sign(
             { _id: user._id },
-            'some-secret-key',
+            NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
             { expiresIn: '7d' }, // контроллер должен создавать JWT сроком на неделю
           );
           // вернём токен
