@@ -102,6 +102,8 @@ function App() {
       api
         .getContent(jwt)
         .then((res) => {
+          console.log(jwt);
+          console.log(JSON.stringify(res));
           setUserEmail(res.data.email);
           setLoggedIn(true);
           history.push("/");
@@ -281,7 +283,7 @@ function App() {
 
   // обработчик login submit
   function handleLoginSubmit(password, email) {
-    // сюда добавим логику обработки формы регистрации
+    // сюда добавим логику обработки формы логина
     // Отправляем запрос в API регистрацию пользователя
     // apiAuth
     api
@@ -294,7 +296,7 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(`Ошибка при регистрации пользователя: ${err}!`);
+        console.log(`Ошибка при логине пользователя: ${err}!`);
         handleSuccessRegLog(false);
       });
   }

@@ -21,38 +21,38 @@ module.exports.createUser = (req, res, next) => {
   // сначала мы ищем юзера в базе, если он уже есть - выкидываем ошибку,
   // что он уже существует, иначе создаем!
   User.findOne({ email })
-    .then((user) => {
-      if (user) {
+    .then((newUser) => {
+      if (newUser) {
         throw new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!');
       } else {
         // работаем дальше: хешируем пароль
         return bcrypt.hash(password, 10);
       }
     })
-    .then((hash) => {
-      User.create({
-        name, about, avatar, email, password: hash,
-      });
+    .then((hash) => User.create({
+      name, about, avatar, email, password: hash,
     })
-    .then((user) => {
-      res.status(201).send({
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-        id: user._id,
-      });
-    })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError('Произошла ошибка: некорректные данные!'));
-      } else if (err.code === 11000) {
-        next(new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!'));
-      } else {
-        // отправляем ошибку в централизованный обработчик
-        next(err);
-      }
-    });
+      .then((user) => {
+        console.log(JSON.stringify(user));
+        return res.status(201).json({
+          name: user.name,
+          about: user.about,
+          avatar: user.avatar,
+          email: user.email,
+          id: user._id,
+        });
+      })
+      .catch((err) => {
+        if (err.name === 'ValidationError') {
+          next(new BadRequestError('Произошла ошибка: некорректные данные!'));
+        } else if (err.code === 11000) {
+          next(new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!'));
+        } else {
+          // отправляем ошибку в централизованный обработчик
+          console.log(`Направляем ошибку в централизованный обработчик: ${err}`);
+          next(err);
+        }
+      }));
 };
 
 // контроллер аутентификации login: получает из запроса почту и пароль
@@ -126,7 +126,7 @@ module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (user) {
-        res.send({
+        res.json({
           name: user.name,
           about: user.about,
           avatar: user.avatar,

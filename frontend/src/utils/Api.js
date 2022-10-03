@@ -14,6 +14,9 @@ class Api {
    */
   _checkResponse(res) {
     console.log(`Проверка результат ${res}`);
+    console.log(`Проверка результат ${res.ok}`);
+    console.log(JSON.stringify(res));
+
     if (res.ok) {
       // Метод json читает ответ от сервера в формате json и возвращает промис для обработки следующим then
       return res.json();
@@ -43,9 +46,14 @@ class Api {
    */
   getUserProfile() {
     const request = this._baseUrl + "/users/me";
+    const newHeaders = this._headers;
+    const jwt = localStorage.getItem("jwt");
+    newHeaders["Content-Type"] = "application/json";
+    newHeaders["Authorization"] = `Bearer ${jwt}`;
+
     return fetch(request, {
       method: "GET",
-      headers: this._headers,
+      headers: newHeaders,
     }).then((res) => this._checkResponse(res));
   }
 
@@ -84,8 +92,11 @@ class Api {
    */
   saveNewProfile(profileData) {
     const request = this._baseUrl + "/users/me";
+    const jwt = localStorage.getItem("jwt");
     const newHeaders = this._headers;
     newHeaders["Content-Type"] = "application/json";
+    newHeaders["Authorization"] = `Bearer ${jwt}`;
+
     // отправляем запрос
     return fetch(request, {
       method: "PATCH",
@@ -167,23 +178,14 @@ class Api {
       fetch(request, {
         method: "POST",
         // headers: this._headers,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json" },
         // JSON.stringify - для преобразования объекта в JSON
         body: JSON.stringify({ email, password }),
       })
         // выполнится, если промис исполнен. Аргумент - функция обработчик успешного выполнения промиса
         .then((res) => this._checkResponse(res))
-        // если все норм, то должен вернуться токен
-        .then((data) => {
-          if (data.token) {
-            // сохраняем токен
-            localStorage.setItem("jwt", data.token);
-            console.log(data.token);
-            return data;
-          } else {
-            return;
-          }
-        })
     );
   }
 
@@ -222,10 +224,12 @@ class Api {
   getContent(token) {
     const request = this._baseUrl + "/users/me";
     // newHeaders = this._headers;
-    const newHeaders = {};
+    const newHeaders = this._headers;
+    const jwt = localStorage.getItem("jwt");
     newHeaders["Content-Type"] = "application/json";
-    newHeaders["Authorization"] = `Bearer ${token}`;
+    newHeaders["Authorization"] = `Bearer ${jwt}`;
 
+    console.log(`Токен: ${jwt}`);
     return (
       fetch(request, {
         method: "GET",
