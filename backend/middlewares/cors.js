@@ -22,7 +22,7 @@ const cors = (req, res, next) => {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Credentials', true);
-    console.log(`allowedCors: ${allowedCors.includes(origin)}`);
+    // console.log(`allowedCors: ${allowedCors.includes(origin)}`);
   }
 
   // если это сложный CORS-запрос
@@ -35,7 +35,7 @@ const cors = (req, res, next) => {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Credentials', true);
 
-    console.log(JSON.stringify(res.header));
+    // console.log(JSON.stringify(res.header));
 
     // завершаем обработку запроса и возвращаем результат клиенту
     res.end();

@@ -25,25 +25,21 @@ module.exports.createUser = (req, res, next) => {
   User.findOne({ email })
     .then((newUser) => {
       if (newUser) {
-        throw new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!');
-      } else {
-        // работаем дальше: хешируем пароль
-        return bcrypt.hash(password, 10);
+        next(new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!'));
       }
+      // работаем дальше: хешируем пароль
+      return bcrypt.hash(password, 10);
     })
     .then((hash) => User.create({
       name, about, avatar, email, password: hash,
     })
-      .then((user) => {
-        console.log(JSON.stringify(user));
-        return res.status(201).json({
-          name: user.name,
-          about: user.about,
-          avatar: user.avatar,
-          email: user.email,
-          id: user._id,
-        });
-      })
+      .then((user) => res.status(201).json({
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+        id: user._id,
+      }))
       .catch((err) => {
         if (err.name === 'ValidationError') {
           next(new BadRequestError('Произошла ошибка: некорректные данные!'));
@@ -105,7 +101,7 @@ module.exports.getUserById = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {
       if (user) {
-        res.send({
+        return res.send({
           name: user.name,
           about: user.about,
           avatar: user.avatar,
@@ -113,7 +109,7 @@ module.exports.getUserById = (req, res, next) => {
           _id: user.id,
         });
       }
-      next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
+      return next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -128,7 +124,8 @@ module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (user) {
-        res.json({
+        // Просто send не останавливает выполнение кода!!
+        return res.json({
           name: user.name,
           about: user.about,
           avatar: user.avatar,
@@ -136,7 +133,7 @@ module.exports.getCurrentUser = (req, res, next) => {
           _id: user.id,
         });
       }
-      next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
+      return next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -156,14 +153,14 @@ module.exports.updateUser = (req, res, next) => {
   })
     .then((user) => {
       if (user) {
-        res.send({
+        return res.send({
           name: user.name,
           about: user.about,
           avatar: user.avatar,
           _id: user.id,
         });
       }
-      next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
+      return next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -184,14 +181,14 @@ module.exports.updateAvatar = (req, res, next) => {
   })
     .then((user) => {
       if (user) {
-        res.send({
+        return res.send({
           name: user.name,
           about: user.about,
           avatar: user.avatar,
           _id: user.id,
         });
       }
-      next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
+      return next(new NotFoundError('Произошла ошибка: пользователь не найден!'));
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {

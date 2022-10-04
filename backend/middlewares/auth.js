@@ -16,7 +16,6 @@ module.exports = (req, res, next) => {
 
   // извлечём токен, если он на месте
   const token = authorization.replace('Bearer ', '');
-  console.log(token);
 
   // верифицируем токен
   let payload;

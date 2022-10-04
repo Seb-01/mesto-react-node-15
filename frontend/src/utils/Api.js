@@ -13,9 +13,9 @@ class Api {
    * @param {object} res - значение, переданное resolve (вызывается при успешном запросе) при создании промиса
    */
   _checkResponse(res) {
-    console.log(`Проверка результат ${res}`);
-    console.log(`Проверка результат ${res.ok}`);
-    console.log(JSON.stringify(res));
+    // console.log(`Проверка результат ${res}`);
+    // console.log(`Проверка результат ${res.ok}`);
+    // console.log(JSON.stringify(res));
 
     if (res.ok) {
       // Метод json читает ответ от сервера в формате json и возвращает промис для обработки следующим then
@@ -169,10 +169,7 @@ class Api {
    */
   register(password, email) {
     const request = this._baseUrl + "/signup";
-    console.log(request);
-    console.log(password);
-    console.log(email);
-    console.log(JSON.stringify({ email, password }));
+    // console.log(JSON.stringify({ email, password }));
 
     return (
       fetch(request, {
@@ -209,7 +206,6 @@ class Api {
           if (data.token) {
             // сохраняем токен
             localStorage.setItem("jwt", data.token);
-            console.log(data.token);
             return data;
           } else {
             return;
@@ -229,7 +225,7 @@ class Api {
     newHeaders["Content-Type"] = "application/json";
     newHeaders["Authorization"] = `Bearer ${jwt}`;
 
-    console.log(`Токен: ${jwt}`);
+    // console.log(`Токен: ${jwt}`);
     return (
       fetch(request, {
         method: "GET",
@@ -251,7 +247,8 @@ class Api {
 // });
 
 export const api = new Api({
-  baseUrl: 'https://api.seb.students.nomoredomains.icu',
+  // baseUrl: 'https://api.seb.students.nomoredomains.icu',
+  baseUrl: 'localhost:3001',
   // headers: { authorization: token },
   headers: {
     'Content-Type':'application/json'
