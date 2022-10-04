@@ -12,7 +12,7 @@ const { validateUserCreate, validateUserLogin } = require('./middlewares/celebra
 const auth = require('./middlewares/auth');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { cors } = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const app = express();
 
