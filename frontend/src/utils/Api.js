@@ -247,8 +247,8 @@ class Api {
 // });
 
 export const api = new Api({
-  // baseUrl: 'https://api.seb.students.nomoredomains.icu',
-  baseUrl: 'localhost:3001',
+  baseUrl: 'https://api.seb.students.nomoredomains.icu',
+  // baseUrl: 'localhost:3001',
   // headers: { authorization: token },
   headers: {
     'Content-Type':'application/json'

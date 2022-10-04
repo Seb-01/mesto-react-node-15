@@ -1,7 +1,7 @@
 require('dotenv').config();
 const app = require('./app');
-// Слушаем 3001 порт
-const { PORT = 3001 } = process.env;
+// Слушаем 3000 порт
+const { PORT = 3000 } = process.env;
 
 app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
