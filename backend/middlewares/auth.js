@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const UnAuthoRizedError = require('../errors/unauthorized');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 // Авторзационный миддлевеар
 // верифицируем токен из заголовков. Если с токеном всё в порядке, мидлвэр должен
 // добавлять пейлоуд токена в объект запроса и вызывать next:
@@ -20,7 +22,7 @@ module.exports = (req, res, next) => {
   let payload;
   try {
     // попытаемся верифицировать токен - payload содержит id пользователя
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     // отправим ошибку, если не получилось
     next(new UnAuthoRizedError('Необходима авторизация!'));
