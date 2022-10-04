@@ -2,6 +2,8 @@
 const allowedCors = [
   'https://seb2.students.nomoredomains.icu',
   'http://seb2.students.nomoredomains.icu',
+  'https://api.seb.students.nomoredomains.icu',
+  'http://api.seb.students.nomoredomains.icu',
   'localhost:3000',
   'http://localhost:3000',
   'https://localhost:3000',
@@ -20,6 +22,7 @@ const cors = (req, res, next) => {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Credentials', true);
+    console.log(`allowedCors: ${allowedCors.includes(origin)}`);
   }
 
   // если это сложный CORS-запрос
@@ -31,6 +34,9 @@ const cors = (req, res, next) => {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Credentials', true);
+
+    console.log(JSON.stringify(res.header));
+
     // завершаем обработку запроса и возвращаем результат клиенту
     res.end();
     return;
