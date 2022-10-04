@@ -102,10 +102,13 @@ function App() {
       api
         .getContent(jwt)
         .then((res) => {
-          console.log(jwt);
-          console.log(JSON.stringify(res));
-          setUserEmail(res.data.email);
-          setLoggedIn(true);
+          // console.log(jwt);
+          // console.log(JSON.stringify(res));
+          if (res) {
+            // setUserEmail(res.data.email);
+            setUserEmail(res.email);
+            setLoggedIn(true);
+          }
           history.push("/");
         })
         .catch((err) => {

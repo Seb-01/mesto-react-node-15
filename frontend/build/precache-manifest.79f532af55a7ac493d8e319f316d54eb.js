@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "b95b5b3f59b3bafa0cc4",
+    "revision": "ba767f092af16f7881b8",
     "url": "/static/css/main.e3d9f66c.chunk.css"
   },
   {
-    "revision": "b95b5b3f59b3bafa0cc4",
-    "url": "/static/js/main.b95b5b3f.chunk.js"
+    "revision": "ba767f092af16f7881b8",
+    "url": "/static/js/main.ba767f09.chunk.js"
   },
   {
     "revision": "4567e6b4a7bd4ab0b748",
@@ -40,12 +40,16 @@ self.__precacheManifest = [
     "url": "/static/media/Inter-Black.661569af.woff2"
   },
   {
-    "revision": "d0b121f3a9d3d88afdfd6902d31ee9a0",
-    "url": "/static/media/Inter-Black.d0b121f3.woff"
-  },
-  {
     "revision": "75db5319e7e87c587019a5df08d7272c",
     "url": "/static/media/Inter-Medium.75db5319.woff2"
+  },
+  {
+    "revision": "bdfb8ebb113b9312e080c2f4b4213223",
+    "url": "/static/media/button_add.bdfb8ebb.svg"
+  },
+  {
+    "revision": "d0b121f3a9d3d88afdfd6902d31ee9a0",
+    "url": "/static/media/Inter-Black.d0b121f3.woff"
   },
   {
     "revision": "c0638bea87a05fdfa2bb3bba2efe54e4",
@@ -56,28 +60,24 @@ self.__precacheManifest = [
     "url": "/static/media/edit_cursor.34c46850.svg"
   },
   {
-    "revision": "58afbe73d6547d1730a443f381c68d9e",
-    "url": "/static/media/button_edit.58afbe73.svg"
-  },
-  {
     "revision": "dc131113894217b5031000575d9de002",
     "url": "/static/media/Inter-Regular.dc131113.woff2"
   },
   {
-    "revision": "bdfb8ebb113b9312e080c2f4b4213223",
-    "url": "/static/media/button_add.bdfb8ebb.svg"
+    "revision": "58afbe73d6547d1730a443f381c68d9e",
+    "url": "/static/media/button_edit.58afbe73.svg"
   },
   {
-    "revision": "933106eaf93ffbb3807048cfeeecbcef",
-    "url": "/static/media/black_like.933106ea.svg"
+    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
+    "url": "/static/media/button_close.4c6a2169.svg"
   },
   {
     "revision": "3ac83020fe53b617b79b5e2ad66764af",
     "url": "/static/media/Inter-Regular.3ac83020.woff"
   },
   {
-    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
-    "url": "/static/media/button_close.4c6a2169.svg"
+    "revision": "933106eaf93ffbb3807048cfeeecbcef",
+    "url": "/static/media/black_like.933106ea.svg"
   },
   {
     "revision": "48bb334e9ca31b6263593527bb6314ac",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/static/media/white_like.cb5f1643.svg"
   },
   {
-    "revision": "713631679ba43630005ddb7612d32eee",
+    "revision": "25c29f3e9eae299417721e0011858546",
     "url": "/index.html"
   }
 ];
