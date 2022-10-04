@@ -253,7 +253,9 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.seb.students.nomoredomains.icu',
   // headers: { authorization: token },
-  headers: {},
+  headers: {
+    'Content-Type':'application/json'
+  },
 });
 
 
