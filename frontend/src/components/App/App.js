@@ -83,7 +83,7 @@ function App() {
         // обрабатываем полученные данные и деструктурируем ответ от сервера, чтобы было понятнее, что пришло
         .then((userData) => {
           // меняем состояние профиля пользователя
-          console.log(userData);
+          // console.log(userData);
           setCurrentUser(userData);
         })
         .catch((err) => {
@@ -167,7 +167,7 @@ function App() {
         // обрабатываем полученные данные деструктурируем ответ от сервера, чтобы было понятнее, что пришло
         .then((cards) => {
           // карточки загружаем
-          console.log(cards);
+          // console.log(cards);
           setCards(cards);
         })
         .catch((err) => {
@@ -313,7 +313,7 @@ function App() {
       .register(password, email)
       // здесь уже данные пользователя от сервера
       .then((res) => {
-        console.log(`Получаю результат registration: ${res}`);
+        // console.log(`Получаю результат registration: ${res}`);
         if (res) {
           history.push("/sign-in");
           handleSuccessRegLog(true);
