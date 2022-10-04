@@ -25,7 +25,7 @@ module.exports.createUser = (req, res, next) => {
   User.findOne({ email })
     .then((newUser) => {
       if (newUser) {
-        next(new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!'));
+        return next(new DuplicateError('Произошла ошибка: пользователь с таким email уже существует!'));
       }
       // работаем дальше: хешируем пароль
       return bcrypt.hash(password, 10);
@@ -62,7 +62,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       if (!user) {
         // пользователь с такой почтой не найден
-        next(new UnAuthoRizedError('Неправильные почта или пароль!'));
+        return next(new UnAuthoRizedError('Неправильные почта или пароль!'));
       }
       // пользователь найден
       return bcrypt.compare(password, user.password)
