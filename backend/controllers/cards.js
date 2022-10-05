@@ -7,10 +7,27 @@ const PermissionError = require('../errors/permission');
 // создает карточку
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const ownerId = req.user._id;
+  // const ownerId = req.user._id;
+  const owner = req.user._id;
+  // console.log(owner);
 
-  Card.create({ name, link, owner: ownerId })
-    .then((card) => res.send(card))
+  Card.create({ name, link, owner /* owner: ownerId */ })
+    .then((card) => {
+      // console.log(JSON.stringify(card));
+      res.send({
+        likes: card.likes,
+        _id: card._id,
+        name: card.name,
+        link: card.link,
+        owner: {
+          name: card.owner.name,
+          about: card.owner.about,
+          avatar: card.owner.avatar,
+          _id: card.owner._id,
+        },
+        createdAt: card.createdAt,
+      });
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Произошла ошибка: некорректные данные!'));
@@ -68,6 +85,7 @@ module.exports.likeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
+        // console.log(card);
         return res.send({
           likes: card.likes,
           _id: card._id,
@@ -101,6 +119,7 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
+        // console.log(card);
         return res.send({
           likes: card.likes,
           _id: card._id,

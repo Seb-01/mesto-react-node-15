@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   // убеждаемся, что он есть или начинается с Bearer
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    next(new UnAuthoRizedError('Необходима авторизация!'));
+    return next(new UnAuthoRizedError('Необходима авторизация!'));
   }
 
   // извлечём токен, если он на месте
@@ -28,5 +28,5 @@ module.exports = (req, res, next) => {
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
-  next(); // пропускаем запрос дальше
+  return next(); // пропускаем запрос дальше
 };

@@ -33,7 +33,7 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, about, avatar, email, password: hash,
     })
-      .then((user) => res.status(201).json({
+      .then((user) => res.status(201).send({
         name: user.name,
         about: user.about,
         avatar: user.avatar,
@@ -125,7 +125,7 @@ module.exports.getCurrentUser = (req, res, next) => {
     .then((user) => {
       if (user) {
         // Просто send не останавливает выполнение кода!!
-        return res.json({
+        return res.send({
           name: user.name,
           about: user.about,
           avatar: user.avatar,

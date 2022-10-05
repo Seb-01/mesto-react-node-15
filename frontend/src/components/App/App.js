@@ -125,7 +125,8 @@ function App() {
   // обработчик клика на кнопку лайк
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
+    // const isLiked = false;
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -275,6 +276,7 @@ function App() {
       // обновляем стейт cards с помощью расширенной копии текущего массива — используя spred оператор ...
       .then((newCard) => {
         // меняем стейт с набором карточек
+        // console.log(JSON.stringify(newCard));
         setCards([newCard, ...cards]);
         // закрываем все модальные окна
         closeAllPopups();

@@ -125,29 +125,36 @@ class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  /** Публичный метод для удаления лайка карточки
-   * @param {object} cardId - id карточки
-   */
-  deleteLike(cardId) {
-    const request = this._baseUrl + `/cards/${cardId}/likes`;
-    // отправляем запрос
-    return fetch(request, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
-  }
+  // /** Публичный метод для удаления лайка карточки
+  //  * @param {object} cardId - id карточки
+  //  */
+  // deleteLike(cardId) {
+  //   const request = this._baseUrl + `/cards/${cardId}/likes`;
+  //   // отправляем запрос
+  //   return fetch(request, {
+  //     method: "DELETE",
+  //     headers: this._headers,
+  //   }).then((res) => this._checkResponse(res));
+  // }
 
-  /** Публичный метод для лайка карточки
-   * @param {object} cardId - id карточки
-   */
-  likeCard(cardId) {
-    const request = this._baseUrl + `/cards/${cardId}/likes`;
-    // отправляем запрос
-    return fetch(request, {
-      method: "PUT",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
-  }
+  // /** Публичный метод для лайка карточки
+  //  * @param {object} cardId - id карточки
+  //  */
+  // likeCard(cardId) {
+  //   const request = this._baseUrl + `/cards/${cardId}/likes`;
+
+  //   const newHeaders = this._headers;
+  //   const jwt = localStorage.getItem("jwt");
+  //   newHeaders["Content-Type"] = "application/json";
+  //   newHeaders["Authorization"] = `Bearer ${jwt}`;
+
+  //   // отправляем запрос
+  //   return fetch(request, {
+  //     method: "PUT",
+  //     // headers: this._headers,
+  //     headers: newHeaders,
+  //   }).then((res) => this._checkResponse(res));
+  // }
 
   /** Изменить статус лайка на противоположный))
    *
@@ -157,10 +164,17 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
     const request = this._baseUrl + `/cards/${cardId}/likes`;
+
+    const newHeaders = this._headers;
+    const jwt = localStorage.getItem("jwt");
+    newHeaders["Content-Type"] = "application/json";
+    newHeaders["Authorization"] = `Bearer ${jwt}`;
+
     // отправляем запрос
     return fetch(request, {
       method: method,
-      headers: this._headers,
+      // headers: this._headers,
+      headers: newHeaders,
     }).then((res) => this._checkResponse(res));
   }
 
@@ -248,7 +262,7 @@ class Api {
 
 export const api = new Api({
   // baseUrl: 'https://api.seb.students.nomoredomains.icu',
-  baseUrl: 'localhost:3001',
+  baseUrl: 'http://localhost:3001',
   // headers: { authorization: token },
   headers: {
     'Content-Type':'application/json'
