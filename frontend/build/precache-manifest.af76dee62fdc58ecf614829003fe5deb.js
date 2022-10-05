@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f8370cc6756635a5f68a",
+    "revision": "d86e25b77412e3a548c5",
     "url": "/static/css/main.e3d9f66c.chunk.css"
   },
   {
-    "revision": "f8370cc6756635a5f68a",
-    "url": "/static/js/main.f8370cc6.chunk.js"
+    "revision": "d86e25b77412e3a548c5",
+    "url": "/static/js/main.d86e25b7.chunk.js"
   },
   {
     "revision": "4567e6b4a7bd4ab0b748",
@@ -52,12 +52,20 @@ self.__precacheManifest = [
     "url": "/static/media/Inter-Medium.c0638bea.woff"
   },
   {
+    "revision": "dc131113894217b5031000575d9de002",
+    "url": "/static/media/Inter-Regular.dc131113.woff2"
+  },
+  {
     "revision": "3ac83020fe53b617b79b5e2ad66764af",
     "url": "/static/media/Inter-Regular.3ac83020.woff"
   },
   {
-    "revision": "dc131113894217b5031000575d9de002",
-    "url": "/static/media/Inter-Regular.dc131113.woff2"
+    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
+    "url": "/static/media/button_close.4c6a2169.svg"
+  },
+  {
+    "revision": "cb5f16439886c2d2781c07c597fe5b1a",
+    "url": "/static/media/white_like.cb5f1643.svg"
   },
   {
     "revision": "bdfb8ebb113b9312e080c2f4b4213223",
@@ -68,18 +76,6 @@ self.__precacheManifest = [
     "url": "/static/media/edit_cursor.34c46850.svg"
   },
   {
-    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
-    "url": "/static/media/button_close.4c6a2169.svg"
-  },
-  {
-    "revision": "58afbe73d6547d1730a443f381c68d9e",
-    "url": "/static/media/button_edit.58afbe73.svg"
-  },
-  {
-    "revision": "cb5f16439886c2d2781c07c597fe5b1a",
-    "url": "/static/media/white_like.cb5f1643.svg"
-  },
-  {
     "revision": "933106eaf93ffbb3807048cfeeecbcef",
     "url": "/static/media/black_like.933106ea.svg"
   },
@@ -88,7 +84,11 @@ self.__precacheManifest = [
     "url": "/static/media/trash_button.48bb334e.svg"
   },
   {
-    "revision": "dbd3ea36068995ad8c4b14486d7bc4f1",
+    "revision": "58afbe73d6547d1730a443f381c68d9e",
+    "url": "/static/media/button_edit.58afbe73.svg"
+  },
+  {
+    "revision": "1f97e672596e40c8bc32e177deba64fd",
     "url": "/index.html"
   }
 ];
