@@ -15,11 +15,17 @@ function Card(props) {
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   const isLiked = props.card.likes.some((i) => i === currentUser._id);
+  // console.log(`isLiked: ${isLiked}`);
+  // console.log(`currentUser._id: ${currentUser._id}`);
+  // console.log(`props.card: ${JSON.stringify(props.card)}`);
+  // console.log(`props.card.likes: ${JSON.stringify(props.card.likes)}`);
+
 
   // Создаём переменную, которую после зададим в `className` для кнопки лайка
   const cardLikeButtonClassName = `elements__like-button ${
     isLiked ? "elements__like-button_active" : ""
   }`;
+  // console.log(`cardLikeButtonClassName: ${cardLikeButtonClassName}`);
 
   function handleClick() {
     props.onCardClick(props.card);

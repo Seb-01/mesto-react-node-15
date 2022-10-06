@@ -15,10 +15,10 @@ class Api {
   _checkResponse(res) {
     // console.log(`Проверка результат ${res}`);
     // console.log(`Проверка результат ${res.ok}`);
-    // console.log(JSON.stringify(res));
 
     if (res.ok) {
       // Метод json читает ответ от сервера в формате json и возвращает промис для обработки следующим then
+      // Чтобы прочитать полный ответ, надо вызвать метод json: декодирует ответ в формате JSON
       return res.json();
     }
     // если ошибка, отклоняем промис
@@ -170,12 +170,21 @@ class Api {
     newHeaders["Content-Type"] = "application/json";
     newHeaders["Authorization"] = `Bearer ${jwt}`;
 
+    console.log(`changeLikeCardStatus cardId: ${cardId}`);
+    console.log(`changeLikeCardStatus isLiked: ${isLiked}`);
+    console.log(`changeLikeCardStatus method: ${method}`);
+
     // отправляем запрос
     return fetch(request, {
       method: method,
       // headers: this._headers,
       headers: newHeaders,
-    }).then((res) => this._checkResponse(res));
+    }).then((res) => {
+      // получили объект встроенного класса Response
+      // Промис успешно выполняется и в свою очередь возвращает объект response после того, как
+      // удалённый сервер присылает заголовки ответа, но до того, как весь ответ сервера полностью загружен.
+      console.log(`changeLikeCardStatus fetch response: ${res.status}`);
+      return this._checkResponse(res)});
   }
 
   /** создать (зарегистрировать) пользователя
@@ -261,8 +270,8 @@ class Api {
 // });
 
 export const api = new Api({
-  // baseUrl: 'https://api.seb.students.nomoredomains.icu',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.seb.students.nomoredomains.icu',
+  // baseUrl: 'http://localhost:3001',
   // headers: { authorization: token },
   headers: {
     'Content-Type':'application/json'

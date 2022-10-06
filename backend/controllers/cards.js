@@ -39,7 +39,8 @@ module.exports.createCard = (req, res, next) => {
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .populate(['owner', 'likes'])
+    // .populate(['owner', 'likes'])
+    .populate(['owner'])
     .then((card) => res.send(card))
     .catch(() => next(new InternalServerError('Произошла внутрення ошибка сервера!')));
 };
@@ -112,6 +113,7 @@ module.exports.likeCard = (req, res, next) => {
 
 // дислайкаем карточку
 module.exports.dislikeCard = (req, res, next) => {
+  // console.log(`dislikeCard user: ${req.user._id}`);
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } }, // убрать _id из массива
@@ -119,7 +121,7 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        // console.log(card);
+        // console.log(`dislikeCard card: ${card}`);
         return res.send({
           likes: card.likes,
           _id: card._id,

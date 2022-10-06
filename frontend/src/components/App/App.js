@@ -126,17 +126,20 @@ function App() {
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some((i) => i === currentUser._id);
-    // const isLiked = false;
+    // console.log(`card.likes: ${JSON.stringify(card.likes)}`);
+    // console.log(`card: ${JSON.stringify(card)}`);
+    // console.log(`isLiked: ${isLiked}`);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
+        // console.log(`newCard: ${JSON.stringify(newCard)}`);
         // теперь нужно эту карточку в нашем стейте найти и проапдейтить. Это вызовет ее перерисовку!
-        setCards((state) =>
+        if (newCard) {setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
         );
-      })
+      }})
       .catch((err) => {
         console.log(`Ошибка при обновлении данных карточки: ${err}!`);
       });
