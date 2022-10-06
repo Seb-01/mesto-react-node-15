@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "0f78ca510bfe1ff11c69",
+    "revision": "ece90decad8c56096d7f",
     "url": "/static/css/main.e3d9f66c.chunk.css"
   },
   {
-    "revision": "0f78ca510bfe1ff11c69",
-    "url": "/static/js/main.0f78ca51.chunk.js"
+    "revision": "ece90decad8c56096d7f",
+    "url": "/static/js/main.ece90dec.chunk.js"
   },
   {
     "revision": "4567e6b4a7bd4ab0b748",
@@ -48,18 +48,6 @@ self.__precacheManifest = [
     "url": "/static/media/Inter-Black.d0b121f3.woff"
   },
   {
-    "revision": "c0638bea87a05fdfa2bb3bba2efe54e4",
-    "url": "/static/media/Inter-Medium.c0638bea.woff"
-  },
-  {
-    "revision": "bdfb8ebb113b9312e080c2f4b4213223",
-    "url": "/static/media/button_add.bdfb8ebb.svg"
-  },
-  {
-    "revision": "3ac83020fe53b617b79b5e2ad66764af",
-    "url": "/static/media/Inter-Regular.3ac83020.woff"
-  },
-  {
     "revision": "dc131113894217b5031000575d9de002",
     "url": "/static/media/Inter-Regular.dc131113.woff2"
   },
@@ -68,16 +56,28 @@ self.__precacheManifest = [
     "url": "/static/media/edit_cursor.34c46850.svg"
   },
   {
+    "revision": "c0638bea87a05fdfa2bb3bba2efe54e4",
+    "url": "/static/media/Inter-Medium.c0638bea.woff"
+  },
+  {
+    "revision": "3ac83020fe53b617b79b5e2ad66764af",
+    "url": "/static/media/Inter-Regular.3ac83020.woff"
+  },
+  {
     "revision": "58afbe73d6547d1730a443f381c68d9e",
     "url": "/static/media/button_edit.58afbe73.svg"
   },
   {
-    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
-    "url": "/static/media/button_close.4c6a2169.svg"
-  },
-  {
     "revision": "cb5f16439886c2d2781c07c597fe5b1a",
     "url": "/static/media/white_like.cb5f1643.svg"
+  },
+  {
+    "revision": "bdfb8ebb113b9312e080c2f4b4213223",
+    "url": "/static/media/button_add.bdfb8ebb.svg"
+  },
+  {
+    "revision": "4c6a21695c10c9c77e7676ffa4a389c1",
+    "url": "/static/media/button_close.4c6a2169.svg"
   },
   {
     "revision": "933106eaf93ffbb3807048cfeeecbcef",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/static/media/trash_button.48bb334e.svg"
   },
   {
-    "revision": "3e524fc8d2277ab33fd5155cd5da6e1a",
+    "revision": "d385c5ae723ddfdf94618320117e5ea2",
     "url": "/index.html"
   }
 ];
